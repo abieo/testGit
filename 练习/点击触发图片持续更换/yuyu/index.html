@@ -8,7 +8,9 @@
 		<div style="">
 			<img src="images/page1/page (1).jpg"/ width="200">
 		</div>
-		<button onclick="show()">点击</button>
+		<button onclick="show(1,5)">点击1</button>
+		<button onclick="show(5,10)">点击2</button>
+		<button onclick="show(10,20)">点击3</button>
 	</body>
 </html>
 <script> 
@@ -29,22 +31,32 @@
 //	window.clearInterval(t1); 
 	var obtn = document.querySelector("button");
 	var oimg = document.querySelector("img");
-	
-var num=0;
-outermost:
-function show(){
-	var timer = setInterval(function(){
-		num += 1;
-		oimg.src = "images/page1/page ("+ num +").jpg";
-		if(num == 20){
-			clearInterval(timer);
-		}
-	},200);
-	
-//	console.log(odiv);
-	
 
+var slice = 1;
+
+function show(a,s){
+
+    if( slice == 1){
+        console.log(slice);
+        var timer = setInterval(function(){
+            a += 1;
+            oimg.src = "images/page1/page ("+ a +").jpg";
+            if(a == s){
+                clearInterval(timer);
+            }
+        },200);
+        slice = 2;
+        console.log(slice);
+	}else {
+        console.log("ok")
+        var timer = setInterval(function(){
+            s -= 1;
+            oimg.src = "images/page1/page ("+ s +").jpg";
+            if(s == a){
+                clearInterval(timer);
+            }
+        },200);
+        slice = 1;
+	}
 }
-
-
 </script>
